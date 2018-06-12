@@ -1,0 +1,132 @@
+﻿@model WebApplication6.Models.FileModel
+
+@{
+    ViewBag.Title = "Admin Area";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm("FileUpload", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            @Html.AntiForgeryToken()
+
+                <div class="col-md-offset-1 col-md-10 col-sm-12">
+                    <div class="section-title">
+                        <h3>File Upload</h3>
+                    </div>
+
+                  
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-md-6 col-sm-6">
+                        <h4>EBook Name</h4>
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.EbookName, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EbookName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+                            @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        @Html.LabelFor(model => model.imagefiles, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.imagefiles, "", new { @type = "file", @multiple = "multiple" })
+                            @Html.ValidationMessageFor(model => model.imagefiles, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-4">
+                        <input type="submit" class="form-control" value="Upload">
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            @Html.Action("FileDetails", "Account")
+                        </div>
+                    </div>
+                </div>
+            }
+                   
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+@*@using (Html.BeginForm("FileUpload", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>FileModel</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <hr />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EbookName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.EbookName, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EbookName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                    @Html.LabelFor(model => model.imagefiles, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.imagefiles, "", new { @type = "file", @multiple = "multiple" })
+                        @Html.ValidationMessageFor(model => model.imagefiles, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-primary" />
+            </div>
+        </div>
+
+
+            <div class="form-group">
+                <div class="col-md-8">
+                    @Html.Action("FileDetails", "Account")
+                </div>
+            </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <script src="~/Scripts/ImageUpload.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+
+
+
+

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApplication6.Models.FileDetailsModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                <div class="col-md-4 col-sm-6">
+                    <a href="single-project.html">
+                        <div class="portfolio-thumb">                           
+                          <img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" class="img-responsive" alt="Portfolio"/>                           
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-item">
+                                    <h3>@Html.DisplayFor(modelItem => item.EbookName)</h3>          
+                                    <h4>@Html.ActionLink("Download", "DownloadFile", new { id = item.Id }) </h4>                        
+                                </div>
+                            </div>                            
+                        </div>
+                     </a>
+                </div>
+                }                         
+            </div>
+        </div>
+    </section>
+</body>
